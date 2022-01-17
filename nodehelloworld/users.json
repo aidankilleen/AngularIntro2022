@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@gmail.com",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "CHANGED",
+      "email": "changed@gmail.com",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Carol",
+      "email": "carol@gmail.com",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Dan",
+      "email": "dan@gmail.com",
+      "active": true
+    }
+  ]
+}
