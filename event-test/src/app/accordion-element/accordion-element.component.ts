@@ -5,7 +5,7 @@ import { AccordionElement } from '../accordion-element.model';
   selector: 'accordion-element',
   template: `
   <div>
-    <h1 (click)="onClick()">{{accordionElement.title}}</h1>
+    <h1 (click)="onClick()">{{ accordionElement.title | titlecase }}</h1>
     <p *ngIf="accordionElement.expanded">
       {{ accordionElement.text }}
     </p>

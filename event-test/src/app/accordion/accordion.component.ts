@@ -20,6 +20,7 @@ export class AccordionComponent implements OnInit {
   @Input() accordionElements:AccordionElement[];
 
   onExpanded(expandedElement: AccordionElement) {
+
     //loop through the accordionElements
     this.accordionElements.forEach(element => {
       if (element != expandedElement) {
