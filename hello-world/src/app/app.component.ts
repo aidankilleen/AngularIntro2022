@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
+import { Message } from './message/message.model';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>{{ title}}</h1>
+    <h1>{{ title }}</h1>
+
+    <ul>
+      <li *ngFor="let item of list">{{ item }}</li>
+    </ul>
 
     <message 
-      [title] = "message.title" 
-      [text] = "message.text">
+      *ngFor="let message of messages" 
+      [message]="message">
     </message>
 
   `,
@@ -15,12 +20,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hello World Angular App';
+  list = ['Alice', 'Bob', 'Carol', 'Dan'];
 
-  message = {
-    title: "Test Message", 
-    text: "this is a test message"
-  }
-
+  messages = [
+    new Message("Test Message 1", "this is test message 1"), 
+    new Message("Test Message 2", "this is test message 2"), 
+    new Message("Test Message 3", "this is test message 3"), 
+    new Message("Test Message 4", "this is test message 4"), 
+    new Message("Test Message 5", "this is test message 5")
+  ];
 
 
 }

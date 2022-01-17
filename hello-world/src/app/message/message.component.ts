@@ -1,19 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Message } from './message.model';
 
 @Component({
   selector: 'message',
   template: `
     <div>
-      <h1>{{ title }}</h1>
-      <p>{{ text }}</p>
+      <h1>{{ message.title }}</h1>
+      <p>{{ message.text }}</p>
     </div>
   `,
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
 
-  @Input() title = "default title";
-  @Input() text = "default message";
+  @Input() message:Message;
 
   constructor() { }
 
