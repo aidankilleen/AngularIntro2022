@@ -6,7 +6,18 @@ import { User } from './models/user.model';
   template: `
     <h1>{{ title }}</h1>
 
-    <user [user] = "user"></user>
+    {{ users | json }}
+    <hr>
+
+
+    <user 
+      *ngFor="let user of users" 
+      [user] = "user"
+      (saved) = "onSaved($event)"
+      >
+    </user>
+
+    <hr>
 
     <input #txtValue [value] = "text" (keyup)="onChange(txtValue.value)">
     <button (click)="text = ''">reset</button>
@@ -37,11 +48,22 @@ export class AppComponent {
   b: number = 50;
   name = "Aidan";
 
+  onSaved(updatedUser: User) {
+    let index = this.users.findIndex(user => user.id == updatedUser.id);
+    this.users.splice(index, 1, updatedUser);
+  }
+
   onChange(txtValue: string) {
     console.log(txtValue);
     this.text = txtValue;
   }
 
-  user: User = new User(1, "Alice", "alice@gmail.com", true);
+  users: User[] = [
+    new User(1, "Alice", "alice@gmail.com", true),
+    new User(2, "Bob", "bob@gmail.com", false), 
+    new User(3, "Carol", "carol@gmail.com", true), 
+    new User(4, "Dan", "dan@gmail.com", true)
+
+  ]
 
 }
