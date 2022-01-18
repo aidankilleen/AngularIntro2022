@@ -8,6 +8,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ExtendableSelectComponent implements OnInit {
 
   @Input() list: string[];
+  @Output() listChange = new EventEmitter();
+  innerList: string[];
+
+
   @Input() value: string;
   @Output() valueChange = new EventEmitter();
 
@@ -17,6 +21,7 @@ export class ExtendableSelectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.innerList = this.list.map(item => item);;
   }
 
   onChange() {
@@ -24,11 +29,13 @@ export class ExtendableSelectComponent implements OnInit {
   }
 
   onSave() {
-    this.list.push(this.newItem);
+    this.innerList.push(this.newItem);
+    this.listChange.emit(this.innerList);
     this.value = this.newItem;
     this.newItem = "";
     this.adding = false;
     this.valueChange.emit(this.value);
+
   }
 
   onCancel() {

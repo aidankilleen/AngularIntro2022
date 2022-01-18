@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <h1>{{ title }}</h1>
 
-    <extendable-select [list]="team"
+    <extendable-select [(list)]="team"
       [(value)]="selected" >
     </extendable-select>
     <hr>
@@ -16,7 +16,8 @@ import { Component } from '@angular/core';
     <extendable-select [list]="customers"
       [(value)]="selectedCustomer">
     </extendable-select>
-    {{selectedCustomer}}
+    {{selectedCustomer}}<br>
+    {{ customers | json }}
 
   `,
   styleUrls: ['./app.component.css']

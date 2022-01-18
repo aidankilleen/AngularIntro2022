@@ -1,6 +1,6 @@
 <div>
     <select [(ngModel)]="value" (change)="onChange()">
-      <option *ngFor="let item of list">
+      <option *ngFor="let item of innerList">
         {{ item }}
       </option>
     </select>
@@ -11,3 +11,4 @@
       <button (click)="onCancel()">cancel</button>
     </span>  
   </div>
+  {{ innerList | json }}
