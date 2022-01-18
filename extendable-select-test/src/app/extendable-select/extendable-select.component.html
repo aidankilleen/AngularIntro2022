@@ -1,0 +1,13 @@
+<div>
+    <select [(ngModel)]="value" (change)="onChange()">
+      <option *ngFor="let item of list">
+        {{ item }}
+      </option>
+    </select>
+    <button *ngIf="!adding" (click)="adding = !adding">+</button>
+    <span *ngIf="adding">
+      <input [(ngModel)] = "newItem">
+      <button (click)="onSave()">save</button>
+      <button (click)="onCancel()">cancel</button>
+    </span>  
+  </div>

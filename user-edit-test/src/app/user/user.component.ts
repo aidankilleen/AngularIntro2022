@@ -12,14 +12,12 @@ export class UserComponent implements OnInit {
   @Output() saved = new EventEmitter();
 
   editingUser: User;
-
   editing: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
   onEdit() {
     this.editingUser = new User(this.user.id, 
       this.user.name, 
