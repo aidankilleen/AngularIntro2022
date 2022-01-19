@@ -8,9 +8,9 @@
     },
     {
       "id": 2,
-      "name": "CHANGED",
-      "email": "changed@gmail.com",
-      "active": true
+      "name": "Bob",
+      "email": "bob@gmail.com",
+      "active": false
     },
     {
       "id": 3,
