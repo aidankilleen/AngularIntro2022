@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Alice",
+      "name": "Alicia",
       "email": "alice@gmail.com",
       "active": true
     },
@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Bob",
       "email": "bob@gmail.com",
-      "active": false
+      "active": true
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Dan",
       "email": "dan@gmail.com",
-      "active": true
+      "active": false
     }
   ]
 }

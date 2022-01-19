@@ -35,9 +35,9 @@ export class UserComponent implements OnInit {
   @Input() user: User;
   @Output() saved = new EventEmitter();
 
-  editing = false;
-  editingUser: User;
-
+  @Input() editing = false;
+  editingUser: User = new User(0, 
+    "", "", false);
 
   constructor() { }
 

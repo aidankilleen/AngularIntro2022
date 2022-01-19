@@ -24,7 +24,15 @@ export class UserHttpService {
 
   deleteUser(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.url}/${id}`);
+  }
 
+  updateUser(userToUpdate: User): Observable<User> {
+      return this.httpClient.put(`${this.url}/${userToUpdate.id}`, 
+        userToUpdate) as Observable<User>;
+  }
+
+  addUser(newUser: User): Observable<User> {
+    return this.httpClient.post(this.url, newUser) as Observable<User>;
   }
 
   testAjaxCall() {

@@ -18,6 +18,7 @@ import { UserHttpService } from './user.service';
         </select>
 
         <button (click)="onDelete()">Delete</button>
+
       </div>
       <div class="right">
           <user 
@@ -26,14 +27,45 @@ import { UserHttpService } from './user.service';
             (saved)="onSaved($event)">
           </user>
       </div>
+    </div>
+
+    <button (click)="onAdd()">New User</button>
+    <user 
+      *ngIf="adding"
+      [user]="newUser"
+      (saved)="onAddUserSaved($event)"
+      [editing]="adding"
+    >
+    </user>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'http user service test';
+  adding = false;
+  newUser: User;
   users: User[];
   selectedId: number = 0;
   selectedUser: User;
+
+  onAdd() {
+    this.adding = true;
+    this.newUser = new User(0, "", "", false);
+  }
+
+  onAddUserSaved(userToAdd: User) {
+
+    this.userService.addUser(userToAdd)
+      .subscribe(addedUser => {
+        this.users.push(addedUser);
+        this.adding = false;
+        this.selectedUser = addedUser;
+        this.selectedId = addedUser.id;
+        //alert(JSON.stringify(addedUser));
+      });
+
+  }
+
 
   constructor(public userService: UserHttpService) {
   }
@@ -50,7 +82,12 @@ export class AppComponent implements OnInit {
 
   onSaved(updatedUser: User) {
 
-    //this.userService.updateUser(updatedUser);
+    this.userService.updateUser(updatedUser)
+      .subscribe(updatedUser => {
+
+        let index = this.users.findIndex(user=>user.id == updatedUser.id);
+        this.users.splice(index, 1, updatedUser);
+      });
   }
   onDelete() {
     this.userService.deleteUser(this.selectedId)
