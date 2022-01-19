@@ -4,4 +4,5 @@
 
 .inactive {
     background-color: lightcoral;
+    text-decoration: underline;
 }
