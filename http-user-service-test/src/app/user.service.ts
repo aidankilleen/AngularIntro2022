@@ -22,6 +22,11 @@ export class UserHttpService {
     return this.httpClient.get(`${this.url}/${id}`) as Observable<User>
   }
 
+  deleteUser(id: number): Observable<Object> {
+    return this.httpClient.delete(`${this.url}/${id}`);
+
+  }
+
   testAjaxCall() {
     fetch(this.url)
       .then(data=>data.json())

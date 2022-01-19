@@ -46,15 +46,23 @@ export class AppComponent implements OnInit {
     // get the details for the selected user
     this.userService.getUser(this.selectedId)
       .subscribe(user => this.selectedUser = user);
-
   }
+
   onSaved(updatedUser: User) {
 
     //this.userService.updateUser(updatedUser);
   }
   onDelete() {
-    //this.userService.deleteUser(this.selectedId);
-    ///this.selectedId = this.userService.getUsers().length == 0 ? 0 :
-    //                  this.userService.getUsers()[0].id;
+    this.userService.deleteUser(this.selectedId)
+      .subscribe(() => { 
+        let index = this.users.findIndex(user => user.id == this.selectedId);
+        this.users.splice(index, 1);
+        if (this.users.length == 0) {
+          this.selectedId = 0;
+        } else {
+          this.selectedId = this.users[0].id;
+          this.onChange();
+        }
+      });
   }
 }
