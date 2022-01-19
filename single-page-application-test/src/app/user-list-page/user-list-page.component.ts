@@ -4,10 +4,16 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-user-list-page',
   template: `
-    <h2>User List</h2>
 
-    <table>
-
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Active</th>
+        </tr>
+      </thead>
       <tbody>
         <tr *ngFor="let user of userService.getUsers()">
           <td><a routerLink="{{ user.id }}"> {{ user.id }}</a></td>

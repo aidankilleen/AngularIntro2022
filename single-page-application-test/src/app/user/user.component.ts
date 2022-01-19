@@ -4,6 +4,7 @@ import { User } from '../user.model';
 @Component({
   selector: 'user',
   template: `
+
     <table>
 
       <tr><td>ID</td><td>{{ user.id }}</td></tr>

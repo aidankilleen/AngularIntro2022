@@ -9,6 +9,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { UserListPageComponent } from './user-list-page/user-list-page.component';
 import { UserDetailPageComponent } from './user-detail-page/user-detail-page.component';
 import { UserComponent } from './user/user.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BootstrapNavbarComponent } from './bootstrap-navbar/bootstrap-navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UserComponent } from './user/user.component';
     ContactPageComponent,
     UserListPageComponent,
     UserDetailPageComponent,
-    UserComponent
+    UserComponent,
+    NavbarComponent,
+    BootstrapNavbarComponent
   ],
   imports: [
     BrowserModule,
