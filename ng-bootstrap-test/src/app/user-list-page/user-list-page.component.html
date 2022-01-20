@@ -1,7 +1,10 @@
 <button (click)="onAdd(userDialog)" class="btn btn-primary">
     <i class="fa fa-user-plus fa-2x"></i>
 </button>
-
+<!--
+    should I make this a component?
+<user-table [users]="users"></user-table>
+-->
 <table class="table">
     <thead>
         <tr>
@@ -13,6 +16,15 @@
         </tr>
     </thead>
     <tbody>
+        <!--
+        should I create the row as a component
+
+        <user-table-row 
+            *ngFor="let user of users"
+            [user]="user"></user-table-row
+            (edit)="onEdit(user)
+            (delete)="onDelete(user)">
+        -->
         <tr *ngFor="let user of users">
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
@@ -29,6 +41,10 @@
         </tr>
     </tbody>
 </table>
+<!--
+    should I create a component?
+<confirm-dialog title="confirm delete" message="are you sure" (save)="onOk()"></confirm-dialog>
+-->
 <ng-template #confirmDialog let-confirmModal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
@@ -45,6 +61,10 @@
     </div>
 </ng-template>
 
+<!--
+    shouldn't we create a component?
+<user-dialog [user]="userToEdit" (save)="onSave()"></user-dialog>
+-->
 <ng-template #userDialog let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{ userDialogTitle }}</h4>
