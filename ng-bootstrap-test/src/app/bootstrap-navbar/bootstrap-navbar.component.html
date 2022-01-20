@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" [routerLinkActive]= "['active']" >
+            <a class="nav-link" routerLink = "/home" (click)="isMenuCollapsed = true">Home</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]= "['active']">
+            <a class="nav-link" routerLink = "/alerts" (click)="isMenuCollapsed = true">Alerts</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]= "['active']">
+            <a class="nav-link" routerLink = "/carousel" (click)="isMenuCollapsed = true">Carousel</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]= "['active']">
+          <a class="nav-link" routerLink = "/users" (click)="isMenuCollapsed = true">Users</a>
+      </li>
+    </ul>
+    </div>
+  </nav>
