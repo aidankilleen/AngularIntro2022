@@ -24,4 +24,9 @@ export class UserHttpService {
   public deleteUser(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
+
+  public addUser(userToAdd: User): Observable<User> {
+
+      return this.httpClient.post(this.url, userToAdd) as Observable<User>;
+  }
 }

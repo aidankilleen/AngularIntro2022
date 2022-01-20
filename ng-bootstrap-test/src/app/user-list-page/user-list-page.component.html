@@ -1,1 +1,73 @@
-<p>user-list-page works!</p>
+<button (click)="onAdd(userDialog)" class="btn btn-primary">
+    <i class="fa fa-user-plus fa-2x"></i>
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.active ? 'Active' : 'Inactive' }}</td>
+            <td>
+                <button class="btn btn-success" (click)="onEdit(userDialog, user)">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-danger" (click)="onDelete(confirmDialog, user)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #confirmDialog let-confirmModal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="confirmModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Are you sure?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="confirmModal.close('ok')">Ok</button>
+        <button class="btn btn-secondary" (click)="confirmModal.dismiss('cancel')">Cancel</button>
+    </div>
+</ng-template>
+
+<ng-template #userDialog let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{ userDialogTitle }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label>Name</label>
+        <input class="form-control" [(ngModel)]="userToEdit.name">
+
+        <label>Email</label>
+        <input class="form-control" [(ngModel)]="userToEdit.email">
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="userToEdit.active">
+            <label class="form-check-label" for="defaultCheck1">
+                Active
+            </label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="modal.close('save')">Save</button>
+        <button class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+    </div>
+</ng-template>

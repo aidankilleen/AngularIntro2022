@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
     <hr>
     <router-outlet></router-outlet>
 
+    <footer class="footer">&copy; 2022 Professional Training Ltd</footer>
+
   
   `,
   styleUrls: ['./app.component.css']
