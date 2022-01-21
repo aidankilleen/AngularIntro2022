@@ -7,18 +7,25 @@ import { Transaction } from './transaction.model';
   template: `
     <h1>{{ title | titlecase}}</h1>
 
-
+    <input type="checkbox" [(ngModel)]="sorted">Sorted |
+    <input type="checkbox" [(ngModel)]="ascending">Ascending
+    <hr>
     <pivot 
       [data]="transactions" 
-      row="user" 
+      row="date"
+      rowType="date" 
       column="colour" 
-      value="quantity">
+      value="quantity"
+      [sorted]="sorted"
+      [ascending]="ascending">
     </pivot>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 
+  sorted: false;
+  ascending: false;
   transactions: Transaction[];
 
   constructor(public transactionService: TransactionHttpService) {
