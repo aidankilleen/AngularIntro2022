@@ -2,31 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'pivot',
-  template: `
-    Pivot Table
-    
-    <button (click)="pivot()">Refresh</button>
-
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th *ngFor = "let columnHeading of columnList">
-              {{ columnHeading | titlecase }}
-          </th>
-        </tr>
-
-      </thead>
-      <tbody>
-        <tr *ngFor = "let rowName of rowList">
-          <td>{{ rowName | titlecase }}</td>
-        </tr>
-      </tbody>
-
-    </table>
-
-
-  `,
+  templateUrl: './pivot.component.html',
   styleUrls: ['./pivot.component.css']
 })
 export class PivotComponent implements OnInit {
