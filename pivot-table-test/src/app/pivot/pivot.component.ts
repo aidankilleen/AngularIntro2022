@@ -19,16 +19,39 @@ export class PivotComponent implements OnInit {
     if (!this.data) {
       return;
     }
-    console.log(this.data);
+    
     // get distinct list of row and column entries
     let result = this.data.reduce((runningTotal, item) => {
       runningTotal.rows.add(item[this.rowFieldName]);
       runningTotal.columns.add(item[this.columnFieldName]);
       return runningTotal;
     }, { rows: new Set(), columns: new Set()});
-    console.log(result);
     this.rowList = Array.from(result.rows);
     this.columnList = Array.from(result.columns);
+
+    // the the totals
+    result = this.data.reduce((runningTotal, item) => {
+
+      if (runningTotal[item[this.rowFieldName]]== null) {
+        runningTotal[item[this.rowFieldName]] = {};
+      }
+
+      if (runningTotal[item[this.rowFieldName]][this.columnFieldName] == null) {
+
+        runningTotal[item[this.rowFieldName]][item[this.columnFieldName]] = 0;
+      }
+
+
+
+
+      runningTotal[item[this.rowFieldName]][item[this.columnFieldName]] += item[this.valueFieldName];
+
+      return runningTotal;
+    }, {});
+
+    console.log(result);
+
+
   }
 
   constructor() { }

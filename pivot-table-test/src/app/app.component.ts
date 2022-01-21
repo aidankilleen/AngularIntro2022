@@ -10,8 +10,8 @@ import { Transaction } from './transaction.model';
 
     <pivot 
       [data]="transactions" 
-      row="colour" 
-      column="user" 
+      row="user" 
+      column="colour" 
       value="quantity">
     </pivot>
   `,
