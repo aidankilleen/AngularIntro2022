@@ -2,12 +2,6 @@ Pivot Table
     
 <button (click)="pivot()">Refresh</button>
 
-<hr>
-<div *ngIf="pivotResult">
-{{ pivotResult['Carol']['red'] | json }}
-</div>
-<hr>
-
 <table>
   <thead>
     <tr>
@@ -27,9 +21,21 @@ Pivot Table
         {{ pivotResult[rowName][columnHeading] }}
       </td>
 
+      <td>
+        {{ rowTotals[rowName] }}
+      </td>
+
     </tr>
     <tr>
       <td>Totals</td>
+
+      <td *ngFor = "let columnHeading of columnList">
+        {{ columnTotals[columnHeading] }}
+      </td>
+
+      <td>
+        {{ grandTotal }}
+      </td>
     </tr>
   </tbody>
 

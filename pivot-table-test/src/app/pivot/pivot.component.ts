@@ -16,6 +16,9 @@ export class PivotComponent implements OnInit {
   rowList: string[] = [];
 
   pivotResult: any;
+  rowTotals: any;
+  columnTotals: any;
+  grandTotal: number;
 
   pivot() {
     console.log("pivot called");
@@ -32,6 +35,10 @@ export class PivotComponent implements OnInit {
     this.rowList = Array.from(result.rows);
     this.columnList = Array.from(result.columns);
 
+    this.rowTotals = {};
+    this.columnTotals = {};
+    this.grandTotal = 0;
+
     // the the totals
     this.pivotResult = this.data.reduce((runningTotal, item) => {
 
@@ -41,6 +48,11 @@ export class PivotComponent implements OnInit {
 
       if (runningTotal[row] == null) {
         runningTotal[row] = {};
+        this.rowTotals[row] = 0;
+      }
+
+      if (this.columnTotals[column] == null) {
+        this.columnTotals[column] = 0;
       }
 
       if (runningTotal[row][column] == null) {
@@ -48,14 +60,12 @@ export class PivotComponent implements OnInit {
       }
 
       runningTotal[row][column] += value;
+      this.rowTotals[row] += value;
+      this.columnTotals[column] += value;
+      this.grandTotal += value;
 
       return runningTotal;
     }, {});
-
-    let n = "Aidan";
-    console.log(this.pivotResult[n]);
-
-
   }
 
   constructor() { }
