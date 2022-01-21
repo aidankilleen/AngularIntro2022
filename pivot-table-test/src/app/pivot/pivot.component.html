@@ -15,7 +15,8 @@ Pivot Table
   </thead>
   <tbody>
     <tr *ngFor = "let rowName of rowList">
-      <td>{{ rowName }}</td>
+      <td *ngIf="rowType=='date'">{{ rowName | monthname | titlecase }}</td>
+      <td *ngIf="rowType!='date'">{{ rowName | titlecase }}</td>
 
       <td *ngFor = "let columnHeading of columnList">
         {{ pivotResult[rowName][columnHeading] }}

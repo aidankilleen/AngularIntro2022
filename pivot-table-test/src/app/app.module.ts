@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PivotComponent } from './pivot/pivot.component';
+import { MonthnamePipe } from './monthname.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PivotComponent
+    PivotComponent,
+    MonthnamePipe
   ],
   imports: [
     BrowserModule,
