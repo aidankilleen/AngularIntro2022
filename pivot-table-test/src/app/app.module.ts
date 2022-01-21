@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PivotComponent } from './pivot/pivot.component';
 import { MonthnamePipe } from './monthname.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { MonthnamePipe } from './monthname.pipe';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, 
-    FormsModule
+    FormsModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

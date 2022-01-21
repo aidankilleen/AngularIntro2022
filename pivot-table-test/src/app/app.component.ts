@@ -14,7 +14,7 @@ import { Transaction } from './transaction.model';
       [data]="transactions" 
       row="date"
       rowType="date" 
-      column="colour" 
+      column="user" 
       value="quantity"
       [sorted]="sorted"
       [ascending]="ascending">
@@ -24,8 +24,8 @@ import { Transaction } from './transaction.model';
 })
 export class AppComponent implements OnInit {
 
-  sorted: false;
-  ascending: false;
+  sorted: true;
+  ascending: true;
   transactions: Transaction[];
 
   constructor(public transactionService: TransactionHttpService) {

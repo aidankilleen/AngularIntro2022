@@ -52,13 +52,18 @@ export class PivotComponent implements OnInit {
     }
 
 
-
+    let startingValues = { rows: new Set(), columns: new Set()}
+    //if (this.rowType == "date") {
+    //  for (let i=1; i<=12; i++) {
+    //    startingValues.rows.add(i);
+    //  }
+    //} 
     // get distinct list of row and column entries
     let result = this.mappedData.reduce((runningTotal, item) => {
       runningTotal.rows.add(item[this.rowFieldName]);
       runningTotal.columns.add(item[this.columnFieldName]);
       return runningTotal;
-    }, { rows: new Set(), columns: new Set()});
+    }, startingValues);
 
     this.rowList = Array.from(result.rows);
 
