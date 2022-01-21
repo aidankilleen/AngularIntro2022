@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormatTextDirective } from './format-text.directive';
+import { FormsModule } from '@angular/forms';
+import { PivotComponent } from './pivot/pivot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormatTextDirective
+    PivotComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    AppRoutingModule, 
+    HttpClientModule, 
     FormsModule
   ],
   providers: [],
